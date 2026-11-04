@@ -54,4 +54,17 @@ How the 2026-10-31 top-up was done; reuse it.
 3. Before adding, compare every pick against the whole repo with a perceptual hash (9x8 grayscale dHash; flag distance ≤ 12). Toplist results overlap heavily with what's already here. Dark or flat images give false matches, so confirm flagged pairs by eye.
 4. Name and commit as in the workflow above.
 
+## "Get new wallpapers" workflow
+
+When the user asks to "get new wallpapers" (or similar), do all of this without further prompting:
+
+1. Count images per folder. Top up the lower-count themes (everything under ~40); skip `cyan/`, the big default, unless asked.
+2. For each theme, read its entry in `THEMES.md` (palette, accent, lock/login, Wallhaven colours and `q` words, taken from the dotfiles) and search Wallhaven as in "Adding wallpapers from Wallhaven" below. Toplist pages overlap with what's here, so go to `page=2`+ or `topRange=all` when page 1 is mostly known.
+3. Download thumbnails into the scratchpad, build contact sheets with `montage`, look at them, and pick 5–10 per theme by mood.
+4. dHash the thumbnails against the whole repo (flag ≤ 12, confirm by eye) and drop duplicates.
+5. Download the full images (skip > 9 MB) and dHash them again: Wallhaven's small thumbnails are cropped to 3:2, so exact repo duplicates can slip past step 4 (four did on 2026-11-04). Open each one with Read, give it a descriptive kebab-case name, check the name isn't already used in any folder, and put it in its folder. If a pick's colour fits another theme better, put it there.
+6. Commit (`feat: more <themes> wallpapers`), push to `origin main`, and report what was added per theme with before → after counts.
+
+If a theme changes in the dotfiles (new accent, lock/login image, palette), update `THEMES.md`.
+
 Aim for roughly 32–35 images per theme so "random theme at login" doesn't repeat images too soon; `cyan/` is the default and is bigger (~84).
