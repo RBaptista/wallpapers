@@ -6,4 +6,4 @@ Wallpapers for [RBaptista/dotfiles](https://github.com/RBaptista/dotfiles), one 
 
 Adding a theme: a new folder here, plus `theme/themes/<name>` in the dotfiles.
 
-[THEMES.md](THEMES.md) lists each theme's palette, accent, lock/login images and Wallhaven search hints.
+[THEMES.md](THEMES.md) lists each theme's palette, accent, lock images, login videos and Wallhaven search hints.

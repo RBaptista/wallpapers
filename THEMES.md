@@ -5,7 +5,8 @@ What each folder has to match, copied from the dotfiles (`~/dotfiles/theme/theme
 
 - **accent**: the theme's highlight colour (`accent=` in the theme file).
 - **bg / fg**: the palette's background and text colours. A wallpaper should sit well behind them.
-- **lock / login**: the hyprlock and SDDM images. Never move or rename them without editing the theme file.
+- **lock / login**: the hyprlock image and the SDDM login video (a still image works there too). Never move or
+  rename them without editing the theme file.
 - **Wallhaven**: `colors=` values (Wallhaven only accepts its fixed list, below) and `q` words to search with.
 
 Wallhaven's colour list: `660000 990000 cc0000 cc3333 ea4c88 993399 663399 333399 0066cc 0099cc 66cccc
@@ -14,15 +15,15 @@ cccccc ffffff 424153`.
 
 | Theme | Palette | Accent | bg | fg | Lock | Login |
 |---|---|---|---|---|---|---|
-| amber | Gruvbox dark | `fe8019` | `282828` | `ebdbb2` | `ocean-sunset-storm-clouds.jpg` | `mountain-sunset-tree-silhouette.png` |
-| blue | Kanagawa wave | `7e9cd8` | `1f1f28` | `dcd7ba` | `torii-starry-night.jpg` | `moon-shooting-stars-sakura.jpg` |
-| cyan | Tokyo Night (default) | `00ffff` | `1a1b26` | `c0caf5` | `neon-ring-minimal.jpg` | `aurora-lake-night.jpg` |
-| frost | Nord | `88c0d0` | `2e3440` | `d8dee9` | `indigo-mountain-valley.jpg` | `night-aurora-tundra.jpg` |
-| green | Everforest dark | `a7c080` | `2d353b` | `d3c6aa` | `green-crescent-glow.png` | `misty-redwoods-ferns.jpg` |
-| mono | Tokyo Night, text-coloured accent | `c0caf5` | `1a1b26` | `c0caf5` | `black-cat-blue-eyes.png` | `black-hole-eclipse-clouds.png` |
-| pink | Dracula | `ff79c6` | `282a36` | `f8f8f2` | `pink-planet-crescent-moon.jpg` | `painted-pink-sky-mountains.jpg` |
-| purple | Catppuccin Mocha | `cba6f7` | `1e1e2e` | `cdd6f4` | `mountain-sunset-city-lights.png` | `violet-palace-lake-boat.png` |
-| red | Rosé Pine (true-red accent) | `e5484d` | `191724` | `e0def4` | `naruto-itachi-blood-moon.png` | `city-skyline-sunset.png` |
+| amber | Gruvbox dark | `fe8019` | `282828` | `ebdbb2` | `ocean-sunset-storm-clouds.jpg` | `golden-hour-island-sunset.mp4` |
+| blue | Kanagawa wave | `7e9cd8` | `1f1f28` | `dcd7ba` | `torii-starry-night.jpg` | `torii-sea-dusk.mp4` |
+| cyan | Tokyo Night (default) | `00ffff` | `1a1b26` | `c0caf5` | `neon-ring-minimal.jpg` | `cyberpunk-balcony-neon-city.mp4` |
+| frost | Nord | `88c0d0` | `2e3440` | `d8dee9` | `indigo-mountain-valley.jpg` | `wanderer-snowy-peaks-clouds.mp4` |
+| green | Everforest dark | `a7c080` | `2d353b` | `d3c6aa` | `green-crescent-glow.png` | `bamboo-forest-lantern-path.mp4` |
+| mono | Tokyo Night, text-coloured accent | `c0caf5` | `1a1b26` | `c0caf5` | `black-cat-blue-eyes.png` | `black-hole-accretion-disk.mp4` |
+| pink | Dracula | `ff79c6` | `282a36` | `f8f8f2` | `pink-planet-crescent-moon.jpg` | `synthwave-sunset-road.mp4` |
+| purple | Catppuccin Mocha | `cba6f7` | `1e1e2e` | `cdd6f4` | `mountain-sunset-city-lights.png` | `twilight-city-crescent-moon.mp4` |
+| red | Rosé Pine (true-red accent) | `e5484d` | `191724` | `e0def4` | `naruto-itachi-blood-moon.png` | `blood-moon-misty-peaks.mp4` |
 
 ## amber (Gruvbox)
 Warm gold and orange: sunsets, deserts, golden light, fire. Gruvbox is earthy, so muted browns and
