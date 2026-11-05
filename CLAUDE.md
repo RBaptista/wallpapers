@@ -8,7 +8,7 @@ An image-only repo of wallpapers for [RBaptista/dotfiles](https://github.com/RBa
 
 How it's consumed (lives in the dotfiles, not here):
 - `install.sh` clones this repo to `~/Pictures/wallpapers` with `--depth 1`.
-- `set-theme.sh <name>` points the wallpaper rotation (`wallpaperd.sh`, awww), hyprlock and the SDDM login screen at `~/Pictures/wallpapers/<name>/`. Each theme file in the dotfiles (`theme/themes/<name>`) names a `lock=` and a `login=` image in its folder: never move or rename those two without updating that file.
+- `set-theme.sh <name>` points the wallpaper rotation (`wallpaperd.sh`, awww), hyprlock and the SDDM login screen at `~/Pictures/wallpapers/<name>/`. Each theme file in the dotfiles (`theme/themes/<name>`) names a `lock=` image and a `login=` video in its folder: never move or rename those two without updating that file.
 
 So renaming or removing a theme folder breaks the dotfiles theme of the same name, and adding a theme needs both a folder here and `theme/themes/<name>` in the dotfiles.
 
@@ -27,6 +27,21 @@ The user's flow is to drop downloaded images into a theme folder, then ask Claud
 - Files are named with descriptive kebab-case names of what the image shows (e.g. `crimson-moon-clouds.png`, `turquoise-lake-waterfall.png`), not source IDs.
 - An image belongs in the folder whose color matches its dominant palette, regardless of its name (see commit `3609060`, which moved `red-portal-machinery.png` from `cyan/` to `red/`).
 - Both `.png` and `.jpg` are in use.
+- Each folder also holds one `.mp4`: the theme's login screen video (`login=`). The wallpaper rotation and
+  picker only take image extensions, so videos never become wallpapers.
+
+## Login videos
+
+The SDDM login screen plays `login=` sharp, looped and muted when it's a video (a still image is blurred
+instead). The current set came from MoeWalls (https://moewalls.com; Wallhaven has no animated wallpapers),
+picked by the folder's mood like any wallpaper. Get the full download, not the site's 720p preview clip,
+then make it 1080p (the monitors' size) without audio, keeping it under ~16 MB:
+
+    ffmpeg -i in.mp4 -vf scale=1920:1080:flags=lanczos -c:v libx264 -preset medium -crf 18 \
+        -pix_fmt yuv420p -an -movflags +faststart out.mp4
+
+Raise `-crf` (to ~27) for very detailed clips: the bamboo forest was 58 MB at 18 and looks the same at 16 MB.
+A clip that is already 1080p just needs its audio dropped (`-map 0:v:0 -c copy -an`).
 - Commit messages use conventional-commit prefixes (`feat:`, `fix:`).
 
 ## Theme moods
@@ -37,7 +52,7 @@ Several themes share a hue, so a folder is defined by mood as well as colour. Wh
 - `purple/` (Catppuccin): quiet twilight. Dusk, mist, night forests, fantasy, calm violet skies.
 - `cyan/` (Tokyo Night, the default): electric. Sci-fi, tech, HUDs, neon, night auroras, underwater glow.
 - `blue/` (Kanagawa): indigo night Japan. Torii, temples, rainy neon streets, moonlit cities.
-- `frost/` (Nord): bright snow and ice. Daylight, white, overcast, glaciers. Night auroras go to cyan; frost keeps only `night-aurora-tundra` (its login image).
+- `frost/` (Nord): bright snow and ice. Daylight, white, overcast, glaciers. Night auroras go to cyan; frost keeps only `night-aurora-tundra` (its login image before the login videos).
 - `amber/` (Gruvbox): warm gold and orange. Sunsets, deserts, golden light, fire.
 - `green/` (Everforest): forests, ferns, lush nature, terminal/matrix green.
 - `red/` (Rosé Pine palette, true-red accent): crimson. Blood moons, red shrines, fire.
@@ -65,6 +80,6 @@ When the user asks to "get new wallpapers" (or similar), do all of this without 
 5. Download the full images (skip > 9 MB) and dHash them again: Wallhaven's small thumbnails are cropped to 3:2, so exact repo duplicates can slip past step 4 (four did on 2026-11-04). Open each one with Read, give it a descriptive kebab-case name, check the name isn't already used in any folder, and put it in its folder. If a pick's colour fits another theme better, put it there.
 6. Commit (`feat: more <themes> wallpapers`), push to `origin main`, and report what was added per theme with before → after counts.
 
-If a theme changes in the dotfiles (new accent, lock/login image, palette), update `THEMES.md`.
+If a theme changes in the dotfiles (new accent, lock image, login video, palette), update `THEMES.md`.
 
 Aim for roughly 32–35 images per theme so "random theme at login" doesn't repeat images too soon; `cyan/` is the default and is bigger (~84).
